@@ -6,13 +6,13 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <Header fetchUrl={requests.netflixOriginals} />
+      <Header genre="netflixOriginals" />
       <MovieRow
         title="NETFLIX ORIGINALS"
         isVerticalPoster
         genre="netflixOriginals"
       />
-      <MovieRow title="Trending Now" genre="trending" />
+      {/* <MovieRow title="Trending Now" genre="trending" /> */}
       {/* <MovieRow title="Top Rated" genre="topRated" />
       <MovieRow title="Action" genre="action" />
       <MovieRow title="Comedy" genre="comedy" />
@@ -20,9 +20,9 @@ export default function Home() {
       <MovieRow title="Romance" genre="romance" />
       <MovieRow title="Mystery" genre="mystery" />
       <MovieRow title="Documentries" genre="documentries" />
-      <MovieRow title="Western" genre="western" /> */}
+      <MovieRow title="Western" genre="western" />
       <MovieRow title="Animation" genre="animation" />
-      <MovieRow title="TV" genre="tv" />
+      <MovieRow title="TV" genre="tv" /> */}
     </>
   );
 }

@@ -12,9 +12,9 @@ function index({ className = "" }) {
         setScroll(false);
       }
     });
-    // return () => {
-    //   window.removeEventListener("scroll");
-    // };
+    return () => {
+      window.removeEventListener("scroll");
+    };
   }, []);
   return (
     <div className={`nav_full_width ${scroll && "bg_black"} ${className}`}>
@@ -27,7 +27,7 @@ function index({ className = "" }) {
           </Link>
         </div>
         <div className="netflix_user_avatar">
-          <Image src="/img/avatar.png" width={35} height={35} />
+          <Image src="/img/user_avatar.png" width={35} height={35} />
         </div>
       </nav>
     </div>

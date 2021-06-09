@@ -15,4 +15,8 @@ export const FailedTrailer = () => {
   );
 };
 
+export const Loading = ({ styling = {} }) => {
+  return <div className="loading" style={styling}></div>;
+};
+
 export default Loader;

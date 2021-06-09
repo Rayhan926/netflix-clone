@@ -10,26 +10,22 @@ import SwiperCore, { Navigation } from "swiper";
 import Image from "next/image";
 import { movieName } from "../utils/functions";
 import YouTube from "react-youtube";
-import Loader, { FailedTrailer } from "./Loader";
+import Loader, { FailedTrailer, Loading } from "./Loader";
 import { useRouter } from "next/router";
-import {
-  getBeakPoints,
-  image_base_path,
-  youtubePlayerOptions,
-} from "../utils/requests";
+import { image_base_path, youtubePlayerOptions } from "../utils/requests";
 import useMovies from "../hooks/useMovies";
 import useTrailer from "../hooks/useTrailer";
 
 SwiperCore.use([Navigation]);
 
-function MovieRow({ title, fetchUrl, isVerticalPoster, genre }) {
+function MovieRow({ title, isVerticalPoster, genre }) {
   const router = useRouter();
 
   const [movieTrailer, setMovieTrailer] = useState("");
   const { loadingTrailer, failedTrailer, trailerId, movieId } =
     useTrailer(movieTrailer);
 
-  const { movies, otherData } = useMovies(genre, 1);
+  const { movies, otherData, loading } = useMovies(genre, 1);
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -123,7 +119,7 @@ function MovieRow({ title, fetchUrl, isVerticalPoster, genre }) {
                           {loadingTrailer && <Loader />}
                           {movieId == movie.id ? "Close" : "Trailer"}
                         </span>
-                        <span className="play_trailer_btn">Detils</span>
+                        <span className="play_trailer_btn">Details</span>
                       </div>
                     </div>
                   </SwiperSlide>
@@ -138,7 +134,9 @@ function MovieRow({ title, fetchUrl, isVerticalPoster, genre }) {
                         ? "/img/hide_vertical.jpg"
                         : "/img/hide_horizontal.jpg"
                     }`}
-                    alt="cstm"
+                    alt={
+                      isVerticalPoster ? "vertical_sd4565" : "horizonal_45fasd"
+                    }
                     width={isVerticalPoster ? 400 : 600}
                     height={isVerticalPoster ? 600 : 340}
                   />

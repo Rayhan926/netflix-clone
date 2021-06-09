@@ -11,7 +11,6 @@ import { image_base_path, youtubePlayerOptions } from "../utils/requests";
 import { movieName } from "./../utils/functions";
 import { getCustomOptions } from "./../utils/requests";
 
-///////
 function SingleGenre({ genre }) {
   const router = useRouter();
   const title = router.query.title;
