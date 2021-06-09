@@ -128,7 +128,7 @@ function SingleGenre({ genre }) {
         )}
       </div>
       {trailerId && (
-        <div className="youtube_trailer_wrapper trailer_popup_wrapper">
+        <div className="youtube_trailer_wrapper trailer_popup_wrapper singleGenrePlayerWrapper">
           <XIcon
             className="close_trailer_icon singleGenreClose"
             onClick={() => setMovieTrailer("")}

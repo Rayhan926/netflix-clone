@@ -19,8 +19,8 @@ const requests = {
 export const image_base_path = "https://image.tmdb.org/t/p/original";
 export const api_base_path = "https://api.themoviedb.org/3";
 export const youtubePlayerOptions = {
-  height: "500",
-  width: "1200",
+  height: "300",
+  width: "100%",
   playerVars: {
     autoplay: 1,
   },

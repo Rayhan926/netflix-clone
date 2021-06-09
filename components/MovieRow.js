@@ -63,16 +63,16 @@ function MovieRow({ title, fetchUrl, isVerticalPoster, genre }) {
                 0: {
                   slidesPerView: isVerticalPoster ? 1 : 1,
                 },
-                400: {
+                300: {
                   slidesPerView: isVerticalPoster ? 2 : 2,
                 },
-                600: {
+                550: {
                   slidesPerView: isVerticalPoster ? 3 : 3,
                 },
-                800: {
+                750: {
                   slidesPerView: isVerticalPoster ? 4 : 4,
                 },
-                1000: {
+                950: {
                   slidesPerView: isVerticalPoster ? 6 : 5,
                 },
                 1200: {

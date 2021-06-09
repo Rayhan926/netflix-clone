@@ -418,6 +418,7 @@ button:focus {
       transform: translateY(15px);
       opacity: 0;
       overflow: hidden;
+      user-select: none !important;
 
       &:hover {
         transition-delay: 0s;
@@ -557,7 +558,7 @@ button:focus {
 .single_netflix_genre_wrapper {
   margin-top: 65px;
   background-color: #e50914;
-  padding: 30px 0;
+  padding: 30px 18px;
   h1 {
     color: #fff;
     text-align: center;
@@ -582,6 +583,17 @@ button:focus {
   z-index: 9999999999;
   background: rgba(#000, 0.95);
   @include flex();
+
+  &.singleGenrePlayerWrapper > div {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+    iframe {
+      width: 100% !important;
+    }
+  }
 }
 
 @media (max-width: 1300px) {
@@ -615,8 +627,24 @@ button:focus {
   .movies_grid_wrapper {
     grid-template-columns: repeat(4, 1fr);
   }
+  .single_netflix_genre_wrapper h1 {
+    font-size: 30px;
+  }
 }
 @media (max-width: 550px) {
+  .single_netflix_genre_wrapper h1 {
+    font-size: 25px;
+  }
+  .netflix_logo {
+    max-width: 100px;
+  }
+  .netflix_user_avatar {
+    width: 30px;
+    height: 30px;
+  }
+  .header_content_wrapper {
+    min-height: 700px !important;
+  }
   .container,
   .netflix_nav {
     padding: 0 18px;
@@ -626,6 +654,9 @@ button:focus {
   }
 }
 @media (max-width: 300px) {
+  .single_netflix_genre_wrapper h1 {
+    font-size: 20px;
+  }
   .movies_grid_wrapper {
     grid-template-columns: repeat(1, 1fr);
   }
