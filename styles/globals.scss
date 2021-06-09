@@ -585,15 +585,31 @@ button:focus {
 }
 
 @media (max-width: 1300px) {
-  .container {
+  .container,
+  .netflix_nav {
     max-width: 100%;
     width: 100%;
     padding: 0 35px;
   }
 }
 @media (max-width: 768px) {
-  .container {
+  .container,
+  .netflix_nav {
     padding: 0 28px;
+  }
+
+  .movie_title {
+    max-width: 85% !important;
+    font-size: 40px !important;
+  }
+
+  .movie_overview {
+    max-width: 80% !important;
+    font-size: 14px;
+  }
+
+  .movie_row_wraper .title {
+    font-size: 22px !important;
   }
 
   .movies_grid_wrapper {
@@ -601,7 +617,8 @@ button:focus {
   }
 }
 @media (max-width: 550px) {
-  .container {
+  .container,
+  .netflix_nav {
     padding: 0 18px;
   }
   .movies_grid_wrapper {

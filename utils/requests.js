@@ -18,29 +18,6 @@ const requests = {
 };
 export const image_base_path = "https://image.tmdb.org/t/p/original";
 export const api_base_path = "https://api.themoviedb.org/3";
-
-export const getBeakPoints = (isVertical) => {
-  return {
-    0: {
-      slidesPerView: isVertical ? 1 : 1,
-    },
-    400: {
-      slidesPerView: isVertical ? 2 : 2,
-    },
-    600: {
-      slidesPerView: isVertical ? 3 : 3,
-    },
-    800: {
-      slidesPerView: isVertical ? 4 : 4,
-    },
-    1000: {
-      slidesPerView: isVertical ? 6 : 5,
-    },
-    1200: {
-      slidesPerView: isVertical ? 8 : 6,
-    },
-  };
-};
 export const youtubePlayerOptions = {
   height: "500",
   width: "1200",

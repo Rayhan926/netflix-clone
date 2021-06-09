@@ -59,7 +59,26 @@ function MovieRow({ title, fetchUrl, isVerticalPoster, genre }) {
                 swiper.navigation.init();
                 swiper.navigation.update();
               }}
-              breakpoints={() => getBeakPoints(isVerticalPoster)}
+              breakpoints={{
+                0: {
+                  slidesPerView: isVerticalPoster ? 1 : 1,
+                },
+                400: {
+                  slidesPerView: isVerticalPoster ? 2 : 2,
+                },
+                600: {
+                  slidesPerView: isVerticalPoster ? 3 : 3,
+                },
+                800: {
+                  slidesPerView: isVerticalPoster ? 4 : 4,
+                },
+                1000: {
+                  slidesPerView: isVerticalPoster ? 6 : 5,
+                },
+                1200: {
+                  slidesPerView: isVerticalPoster ? 8 : 6,
+                },
+              }}
             >
               <div className="swiper_custom_navigation_wrapper">
                 <div ref={prevRef} className="navigation">
