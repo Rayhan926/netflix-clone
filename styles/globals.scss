@@ -1,0 +1,615 @@
+@font-face {
+  font-family: "NetflixSansRegular";
+  src: url(../public/fonts/NetflixSansRegular.ttf);
+}
+@font-face {
+  font-family: "NetflixSansMedium";
+  src: url(../public/fonts/NetflixSansMedium.ttf);
+}
+@font-face {
+  font-family: "NetflixSansBold";
+  src: url(../public/fonts/NetflixSansBold.ttf);
+}
+
+// Variables
+$NetflixSansRegular: "NetflixSansRegular";
+$NetflixSansMedium: "NetflixSansMedium";
+$NetflixSansBold: "NetflixSansBold";
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+body {
+  background: #000;
+  font-family: $NetflixSansRegular;
+}
+* {
+  box-sizing: border-box;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.h-100 {
+  height: 100%;
+}
+
+/* Make clicks pass-through */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #e50914 !important;
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  opacity: 1;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: #29d;
+  border-left-color: #29d;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+  animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes nprogress-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#nprogress .bar {
+  background: #4d8cf4;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  min-width: 40px;
+  max-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: rgba(#000, 0.25);
+  transition: 0.2s ease;
+  &:hover {
+    background-color: rgba(#000, 0.4);
+  }
+
+  &::after {
+    font-size: 22px !important;
+    color: #fff;
+  }
+}
+button,
+button:focus {
+  border: none;
+  outline: none !important;
+  background: transparent;
+}
+
+// Nav Start
+
+.nav_full_width {
+  height: 65px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  transition: background 0.3s ease;
+
+  &.bg_black {
+    background: #000;
+  }
+}
+.netflix_nav {
+  width: 100%;
+  height: 100%;
+  padding: 0 40px;
+  @include flex();
+  justify-content: space-between;
+
+  .netflix_logo,
+  .netflix_user_avatar {
+    cursor: pointer;
+    @include flex();
+  }
+}
+// Nav End
+
+// Header Start
+.netflix_header {
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+  //   url(.././public/img/header_bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.header_content_wrapper {
+  min-height: 100vh;
+  @include flex();
+  flex-direction: column;
+  align-items: flex-start;
+
+  .movie_title {
+    color: #fff;
+    font-family: $NetflixSansBold;
+    font-size: 50px;
+    max-width: 60%;
+    line-height: 1.2;
+  }
+
+  .movie_buttons {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    a {
+      font-size: 16px;
+      color: #fff;
+      background-color: rgba(#fff, 0.15);
+      cursor: pointer;
+      padding: 7px 25px;
+      border-radius: 2px;
+      margin-right: 12px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: rgba(#fff, 0.25);
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  .movie_overview {
+    max-width: 40%;
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.4;
+    margin-top: 0;
+  }
+}
+// Header End
+
+// Movie Row Start
+.movie_row_wraper {
+  margin-top: 30px;
+  position: relative;
+
+  .title {
+    color: #fff;
+    font-family: $NetflixSansMedium;
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+}
+.movies_slider_wrapper {
+  .swiper-container {
+    position: relative;
+    padding-top: 50px;
+    margin-top: -50px;
+
+    .swiper_custom_navigation_wrapper {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      z-index: 10;
+
+      .navigation {
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.5);
+        width: 30px;
+        height: 30px;
+        padding: 4px;
+        background: rgba(255, 255, 255, 0.02);
+        margin-right: 4px;
+        @include flex();
+
+        &:last-child {
+          margin-left: 4px;
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          color: rgba(255, 255, 255, 0.8);
+        }
+        &.swiper-button-disabled,
+        &.swiper-button-disabled:hover {
+          cursor: not-allowed;
+          background: rgba(255, 255, 255, 0.02);
+          color: rgba(255, 255, 255, 0.5);
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+  img {
+    object-fit: contain;
+  }
+}
+
+.movie_wrapper {
+  position: relative;
+
+  &.view_all_slide {
+    background-color: #111;
+
+    .view_more_icon {
+      width: 100px;
+      height: 100px;
+      color: rgba(#fff, 0.04);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.2s ease;
+    }
+
+    img {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    a {
+      @include flex();
+      padding: 10px 10px;
+      height: 100%;
+      width: 100%;
+      text-decoration: none;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      span {
+        color: #fff;
+        font-size: 17px;
+        text-align: center;
+      }
+    }
+  }
+
+  &:hover {
+    .view_more_icon {
+      transform: translate(-50%, -50%) scale(1.2);
+      color: rgba(#fff, 0.1);
+    }
+  }
+
+  .overly_content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    // background: linear-gradient(0deg, #000 20%, transparent 80%);
+    background: rgba(#000, 0.5);
+    color: #fff;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: all 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+
+    p {
+      color: rgb(219, 219, 219);
+      font-size: 12px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+      -webkit-line-clamp: 2;
+      line-height: 1.3;
+      margin: 0;
+      transform: translateY(15px);
+      opacity: 0;
+      transition: 0.2s ease;
+      transition-delay: 0.25s;
+    }
+
+    p.title {
+      font-family: $NetflixSansMedium;
+      font-size: 16px;
+      margin-bottom: 5px;
+      margin-bottom: 4px;
+      -webkit-line-clamp: 1;
+      transform: translateY(15px);
+      opacity: 0;
+      transition: 0.2s ease;
+      transition-delay: 0.15s;
+    }
+    .buttons_group {
+      display: flex;
+      gap: 0 8px;
+    }
+    .play_trailer_btn {
+      position: relative;
+      display: inline-block;
+      font-size: 13px;
+      font-family: $NetflixSansRegular;
+      color: #fff;
+      background: #e50914;
+      padding: 5px 12px 7px 12px;
+      margin-top: 6px;
+      cursor: pointer;
+      border-radius: 2px;
+      width: 100%;
+      text-align: center;
+      line-height: 1;
+      transition: all 0.2s ease;
+      transition-delay: 0.35s;
+      transform: translateY(15px);
+      opacity: 0;
+      overflow: hidden;
+
+      &:hover {
+        transition-delay: 0s;
+        background: #b80009;
+      }
+    }
+  }
+
+  &:hover,
+  &.playing_trailer {
+    .overly_content {
+      opacity: 1;
+      pointer-events: all;
+
+      p,
+      .play_trailer_btn {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+.loading_data {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #b80009;
+  @include flex();
+  cursor: not-allowed;
+
+  span {
+    width: 7px;
+    height: 7px;
+    background: #fff;
+    border-radius: 50%;
+    display: block;
+    margin: 0 2px;
+    animation: loading 0.8s linear infinite;
+
+    &:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.25s;
+    }
+  }
+}
+.loading_more_wrapper {
+  width: 100%;
+  height: 40px;
+  @include flex();
+  background: transparent;
+  position: relative;
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+  .single_page_loader {
+    background: transparent;
+    span {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+.youtube_trailer_wrapper {
+  .close_trailer_icon {
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    margin-left: auto;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.02);
+    margin-left: auto;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: block;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    &.singleGenreClose {
+      position: absolute;
+      top: 25px;
+      margin: 0 !important;
+      right: 25px;
+    }
+  }
+}
+// Movie Row End
+
+@keyframes loading {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+// Failed To Play Trailer Start
+@keyframes scaleIt {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.failed_to_play_wrapper {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  background-color: red;
+  color: #fff;
+  padding: 8px 12px;
+  z-index: 999;
+  animation: scaleIt 0.5s ease;
+
+  p {
+    font-size: 15px;
+    margin: 0;
+  }
+}
+// Failed To Play Trailer End
+
+// Single Netflix Genre Start
+.single_netflix_genre_wrapper {
+  margin-top: 65px;
+  background-color: #e50914;
+  padding: 30px 0;
+  h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 35px;
+    font-family: $NetflixSansMedium;
+  }
+}
+.movies_grid_wrapper {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px 10px;
+}
+// Single Netflix Genre End
+
+.trailer_popup_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999999999;
+  background: rgba(#000, 0.95);
+  @include flex();
+}
+
+@media (max-width: 1300px) {
+  .container {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 35px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 0 28px;
+  }
+
+  .movies_grid_wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 550px) {
+  .container {
+    padding: 0 18px;
+  }
+  .movies_grid_wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 300px) {
+  .movies_grid_wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
