@@ -12,8 +12,8 @@ export default function Home() {
         isVerticalPoster
         genre="netflixOriginals"
       />
-      {/* <MovieRow title="Trending Now" genre="trending" /> */}
-      {/* <MovieRow title="Top Rated" genre="topRated" />
+      <MovieRow title="Trending Now" genre="trending" />
+      <MovieRow title="Top Rated" genre="topRated" />
       <MovieRow title="Action" genre="action" />
       <MovieRow title="Comedy" genre="comedy" />
       <MovieRow title="Horror" genre="horror" />
@@ -22,7 +22,7 @@ export default function Home() {
       <MovieRow title="Documentries" genre="documentries" />
       <MovieRow title="Western" genre="western" />
       <MovieRow title="Animation" genre="animation" />
-      <MovieRow title="TV" genre="tv" /> */}
+      <MovieRow title="TV" genre="tv" />
     </>
   );
 }

@@ -13,7 +13,7 @@ function index({ className = "" }) {
       }
     });
     return () => {
-      window.removeEventListener("scroll");
+      window.removeEventListener("scroll", {}, false);
     };
   }, []);
   return (

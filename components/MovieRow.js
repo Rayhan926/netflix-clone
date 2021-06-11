@@ -10,11 +10,12 @@ import SwiperCore, { Navigation } from "swiper";
 import Image from "next/image";
 import { movieName } from "../utils/functions";
 import YouTube from "react-youtube";
-import Loader, { FailedTrailer, Loading } from "./Loader";
+import Loader, { FailedTrailer } from "./Loader";
 import { useRouter } from "next/router";
 import { image_base_path, youtubePlayerOptions } from "../utils/requests";
 import useMovies from "../hooks/useMovies";
 import useTrailer from "../hooks/useTrailer";
+import Link from "next/link";
 
 SwiperCore.use([Navigation]);
 
@@ -72,7 +73,7 @@ function MovieRow({ title, isVerticalPoster, genre }) {
                   slidesPerView: isVerticalPoster ? 6 : 5,
                 },
                 1200: {
-                  slidesPerView: isVerticalPoster ? 8 : 6,
+                  slidesPerView: isVerticalPoster ? 7 : 5,
                 },
               }}
             >
@@ -102,6 +103,7 @@ function MovieRow({ title, isVerticalPoster, genre }) {
                     key={movie.id}
                   >
                     <Image
+                      className="imgLoading"
                       src={poster}
                       alt={movieName(movie)}
                       width={isVerticalPoster ? 400 : 600}
@@ -112,14 +114,28 @@ function MovieRow({ title, isVerticalPoster, genre }) {
                       <p>{movie.overview}</p>
 
                       <div className="buttons_group">
-                        <span
-                          className="play_trailer_btn"
-                          onClick={() => handleClick(movie)}
+                        <Link href="#">
+                          <a>
+                            <span
+                              className="play_trailer_btn"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleClick(movie);
+                              }}
+                            >
+                              {loadingTrailer && <Loader />}
+                              {movieId == movie.id ? "Close" : "Trailer"}
+                            </span>
+                          </a>
+                        </Link>
+                        <Link
+                          href="/details/[movieId]"
+                          as={`/details/${movie.id}`}
                         >
-                          {loadingTrailer && <Loader />}
-                          {movieId == movie.id ? "Close" : "Trailer"}
-                        </span>
-                        <span className="play_trailer_btn">Details</span>
+                          <a>
+                            <span className="play_trailer_btn">Details</span>
+                          </a>
+                        </Link>
                       </div>
                     </div>
                   </SwiperSlide>
@@ -129,6 +145,7 @@ function MovieRow({ title, isVerticalPoster, genre }) {
               {movies && (
                 <SwiperSlide className="movie_wrapper view_all_slide">
                   <Image
+                    className="imgLoading"
                     src={`${
                       isVerticalPoster
                         ? "/img/hide_vertical.jpg"

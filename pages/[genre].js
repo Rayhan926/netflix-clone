@@ -65,6 +65,7 @@ function SingleGenre({ genre }) {
                   key={movie.id}
                 >
                   <Image
+                    className="imgLoading"
                     src={image_base_path + movie.poster_path}
                     alt="sas"
                     width={250 * 2}
@@ -95,6 +96,7 @@ function SingleGenre({ genre }) {
                   key={movie.id}
                 >
                   <Image
+                    className="imgLoading"
                     src={image_base_path + movie.poster_path}
                     alt="sas"
                     width={250 * 2}
