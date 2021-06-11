@@ -113,7 +113,17 @@ function SingleGenre({ genre }) {
                         {loadingTrailer && <Loader />}
                         {trailerId ? "Close" : "Trailer"}
                       </span>
-                      <span className="play_trailer_btn">Details</span>
+                      <span
+                        className="play_trailer_btn"
+                        onClick={() => {
+                          router.push({
+                            pathname: "/details/[movieId]",
+                            query: { movieId: movie.id },
+                          });
+                        }}
+                      >
+                        Details
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -122,9 +132,14 @@ function SingleGenre({ genre }) {
           })}
         </div>
 
-        {loading && (
+        {loading && !error && (
           <div className="loading_more_wrapper">
             <Loader extraClassName="single_page_loader" />
+          </div>
+        )}
+        {error && (
+          <div className="loading_more_wrapper with_error">
+            <h4>Something went wrong!</h4>
           </div>
         )}
       </div>

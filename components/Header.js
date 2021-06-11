@@ -1,7 +1,7 @@
 import useMovies from "../hooks/useMovies";
 import { movieName, truncate } from "../utils/functions";
 import { image_base_path } from "../utils/requests";
-import { Loading } from "./Loader";
+import Loader, { Loading } from "./Loader";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
@@ -43,36 +43,44 @@ function Header({ genre }) {
         )}
         <div className="header_content_wrapper">
           <div className="container header_container">
-            <h1 className="movie_title">
-              {loading ? (
-                <Loading styling={{ height: "50px", width: "500px" }} />
-              ) : (
-                movieName(randomMovie)
-              )}
-            </h1>
-            <div className="movie_overview">
-              {loading ? (
-                <>
-                  <Loading
-                    styling={{
-                      width: "450px",
-                      height: "15px",
-                      marginBottom: "4px",
-                    }}
-                  />
-                  <Loading
-                    styling={{
-                      width: "410px",
-                      height: "15px",
-                      marginBottom: "4px",
-                    }}
-                  />
-                  <Loading styling={{ width: "380px", height: "15px" }} />
-                </>
-              ) : (
-                <p>{truncate(randomMovie.overview, 150)}</p>
-              )}
-            </div>
+            {!error ? (
+              <>
+                <h1 className="movie_title">
+                  {loading ? (
+                    <Loading styling={{ height: "50px", width: "500px" }} />
+                  ) : (
+                    movieName(randomMovie)
+                  )}
+                </h1>
+                <div className="movie_overview">
+                  {loading ? (
+                    <>
+                      <Loading
+                        styling={{
+                          width: "450px",
+                          height: "15px",
+                          marginBottom: "4px",
+                        }}
+                      />
+                      <Loading
+                        styling={{
+                          width: "410px",
+                          height: "15px",
+                          marginBottom: "4px",
+                        }}
+                      />
+                      <Loading styling={{ width: "380px", height: "15px" }} />
+                    </>
+                  ) : (
+                    <p>{truncate(randomMovie.overview, 150)}</p>
+                  )}
+                </div>
+              </>
+            ) : (
+              <div className="loading_more_wrapper with_error">
+                <h4>Something went wrong!</h4>
+              </div>
+            )}
           </div>
         </div>
       </header>

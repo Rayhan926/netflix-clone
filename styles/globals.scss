@@ -497,9 +497,16 @@ button:focus {
 
   .single_page_loader {
     background: transparent;
+    cursor: default;
     span {
       width: 12px;
       height: 12px;
+    }
+  }
+
+  &.with_error {
+    h4 {
+      color: red;
     }
   }
 }
@@ -746,7 +753,7 @@ button:focus {
     font-size: 30px;
     margin-bottom: 10px;
   }
-  a {
+  span {
     font-size: 16px;
     font-family: $NetflixSansRegular;
     color: #fff;
@@ -822,6 +829,11 @@ button:focus {
   }
 }
 @media (max-width: 550px) {
+  .overly_content {
+    p {
+      user-select: none !important;
+    }
+  }
   .movie_details_wrapper {
     .flex_wrapper {
       display: flex;
@@ -845,9 +857,6 @@ button:focus {
         font-size: 15px !important;
       }
     }
-  }
-  .movie_overview {
-    display: none;
   }
   .single_netflix_genre_wrapper h1 {
     font-size: 25px;

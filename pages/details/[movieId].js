@@ -1,10 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Nav from "../../components/Nav";
 import { movieName } from "../../utils/functions";
 import { image_base_path } from "../../utils/requests";
 function MovieDetails({ data }) {
+  const router = useRouter();
   const [error, setError] = useState(false);
   useEffect(() => {
     if (data.success === false) setError(true);
@@ -62,9 +62,8 @@ function MovieDetails({ data }) {
       ) : (
         <div className="error_popup">
           <h1>Couldn't load the data.</h1>
-          <Link href="/">
-            <a>Go Home</a>
-          </Link>
+
+          <span onClick={() => router.back()}>Go Home</span>
         </div>
       )}
     </>
